@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html ng-app="exampleApp">
+<head>
+    <title>Input</title>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="ngmodules/angular.js"></script>
+
+    <script>
+        angular.module("exampleApp", [])
+            .controller("defaultCtrl", function ($scope) {
+                $scope.requireValue = true;
+                $scope.matchPattern = new RegExp("^[a-z]");
+            });
+    </script>
+</head>
+<body>
+    <div class="card" ng-controller="defaultCtrl">
+        <form name="myForm" novalidate>
+            <div class="well">
+                <div class="form-group">
+                    <label>Text:</label>
+                    <input type="text"
+                           name="sample"
+                           class="form-control"
+                           ng-model="inputValue"
+                           ng-required="requireValue"
+                           ng-minlength="3"
+                           ng-maxlength="10"
+                           ng-pattern="matchPattern">
+                </div>
+            </div>
+
+            <div class="well">
+                <p>Required Error: {{ myForm.sample.$error.required }}</p>
+                <p>Min length Error: {{ myForm.sample.$error.minlength }}</p>
+                <p>Max length Error: {{ myForm.sample.$error.maxlength }}</p>
+                <p>Pattern Error: {{ myForm.sample.$error.pattern }}</p>
+                <p>Element valid: {{ myForm.sample.$valid }}</p>
+            </div>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html ng-app="exampleApp">
+<head>
+    <title>Checkbox</title>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="ngmodules/angular.js"></script>
+
+    <script>
+        angular.module("exampleApp", [])
+            .controller("defaultCtrl", function ($scope) {
+            });
+    </script>
+</head>
+<body>
+<div class="card" ng-controller="defaultCtrl">
+    <form name="myForm" novalidate>
+        <div class="well">
+            <div class="check-box">
+                <label>
+                    <input type="checkbox"
+                           ng-model="inputValue"
+                           ng-true-value="'Hurrah!'"
+                           ng-false-value="'Boo!'">
+                    This is a checkbox
+                </label>
+            </div>
+        </div>
+
+        <div class="well">
+            <p> {{ inputValue }}</p>
+        </div>
+    </form>
+</div>
+</body>
